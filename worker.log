@@ -1,0 +1,4 @@
+[2018-03-14 18:34:38] Processing: App\Jobs\SendNotification
+[2018-03-14 18:34:38] Processing: App\Jobs\SendNotification
+[2018-03-14 18:34:38] Processing: App\Jobs\SendNotification
+[2018-03-14 18:34:38] Failed:     App\Jobs\SendNotification
