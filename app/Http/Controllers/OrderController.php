@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\StaticArray;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -1413,7 +1414,7 @@ class OrderController extends Controller
             $toProvider = Provider::where('id',$order->provider_id)->first(['user_id']);
 
             //$msgProvider = __("general.yourOrderStatusChangedByDelivery");
-            $msgProvider = __("general.". \StaticArray::$orderStatus[$stepId]) . __("general.clientOrderName") . $order->client_name;
+            $msgProvider = __("general.". StaticArray::$orderStatus[$stepId]) . __("general.clientOrderName") . $order->client_name;
 
             //$this->sendNotificationsToUser($msgProvider ,$toProvider->user_id , false ,'/provider/orders/' . $order->id);
             dispatch(new SendNotification($msgProvider ,$toProvider->user_id , false ,url('/provider/orders/' . $order->id)));
@@ -1624,7 +1625,7 @@ class OrderController extends Controller
 
         foreach($ordersCountStatistics as $k => $order){
             $orderByStatus['data'][$k] = $order->orders_count;
-            $orderByStatus['status'][$k] = __("general.".\StaticArray::$orderStatus[$order->status]);
+            $orderByStatus['status'][$k] = __("general.".StaticArray::$orderStatus[$order->status]);
             $orderByStatus['dataStatus'][$order->status] = $order->orders_count;
         }
 
